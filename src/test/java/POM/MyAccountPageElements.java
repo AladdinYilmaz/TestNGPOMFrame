@@ -12,7 +12,8 @@ public class MyAccountPageElements {
 
     @FindBy(xpath = "//h2[text()='My Account']")
     public WebElement myAccountHeader;
-
+    @FindBy(xpath = "//*[@id=\"content\"]/h2")
+    public WebElement addressBookHeader;
     @FindBy(xpath = "//a[text()='Newsletter']")
     public WebElement newsletterButton;
 
@@ -55,7 +56,7 @@ public class MyAccountPageElements {
     @FindBy(id = "input-country")
     public WebElement countryDropdown;
 
-    @FindBy(id = "input-zone")
+    @FindBy(xpath = ("//select[@id='input-zone']"))
     public WebElement stateDropdown;
 
     @FindBy(xpath = "(//input[@name='default'])[1]")
@@ -64,5 +65,19 @@ public class MyAccountPageElements {
     @FindBy(xpath = "(//input[@name='default'])[2]")
     public WebElement defaultAddressNoRadioButton;
 
+    @FindBy(xpath = "(//*[@id=\"content\"]/form/div/div[2]/input)")
+    public WebElement addressAddContinueButton;
+    @FindBy(xpath = "//*[text()= ' Your address has been successfully added']")
+    public WebElement addAddressSuccessMessage;
 
+    @FindBy(xpath = "//*[@id=\"content\"]/div[1]/table/tbody/tr/td[2]/a[1]")
+    public WebElement editAddressBookButton;
+
+    @FindBy(xpath = "//*[text()= ' Your address has been successfully updated']")
+    public WebElement updateAddressSuccessMessage;
+
+    @FindBy(xpath = "//*[@id=\"content\"]/div[1]/table/tbody/tr[1]/td[2]/a[2]")
+    public WebElement deleteAddressBookButton;
+    @FindBy(xpath = "//*[text()= ' Your address has been successfully deleted']")
+    public WebElement deleteAddressSuccessMessage;
 }

@@ -7,13 +7,15 @@ import Utils.BaseDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class _01LoginTest extends BaseDriver {
+public class _03EditAccountTest extends BaseDriver {
     HomePageElements homePageElements;
     LoginPageElements loginPageElements;
     MyAccountPageElements myAccountPageElements;
 
- @Test
-    public void loginPositiveTest() {
+    String expectedMessage = "Success: Your account has been successfully updated.";
+
+    @Test
+    public void editAccountTest() {
 
         homePageElements = new HomePageElements(driver);
         loginPageElements = new LoginPageElements(driver);
@@ -30,27 +32,18 @@ public class _01LoginTest extends BaseDriver {
 
         Assert.assertEquals(myAccountHeaderText, "My Account");
 
-    }
+        myAccountPageElements.editAccountButton.click();
 
-    @Test
-    public void loginNegativeTest() {
+        myAccountPageElements.firstNameInput.clear();
+        myAccountPageElements.firstNameInput.sendKeys("Kevin");
 
-        homePageElements = new HomePageElements(driver);
-        loginPageElements = new LoginPageElements(driver);
+        myAccountPageElements.lastNameInput.clear();
+        myAccountPageElements.lastNameInput.sendKeys("Debruyne");
 
-        homePageElements.myAccountButton.click();
-        homePageElements.loginButton.click();
+        myAccountPageElements.continueButton.click();
 
-        loginPageElements.emailInput.sendKeys("test@technostudy.com");
-        loginPageElements.passwordInput.sendKeys("Test1234!!!");
-        loginPageElements.loginButton.click();
-
-        String errorActualText = loginPageElements.errorMessage.getText();
-        boolean isErrorDisplayed = loginPageElements.errorMessage.isDisplayed();
-
-        Assert.assertTrue(isErrorDisplayed);
-        Assert.assertEquals(errorActualText, "Warning: No match for E-Mail Address and/or Password.");
+        Assert.assertTrue(myAccountPageElements.successMessage.isDisplayed());
+        Assert.assertEquals(myAccountPageElements.successMessage.getText(), expectedMessage);
 
     }
-
 }
