@@ -18,9 +18,8 @@ public class _04AddressBookFuncTest extends BaseDriver {
     LoginPageElements loginPageElements;
     MyAccountPageElements myAccountPageElements;
 
-    String expectedMessage = "Your address has been successfully added";
-    @Test(priority = 1)
-    public void addNewAddress(){
+    public void login(){
+
         homePageElements = new HomePageElements(driver);
         loginPageElements = new LoginPageElements(driver);
         myAccountPageElements = new MyAccountPageElements(driver);
@@ -31,6 +30,13 @@ public class _04AddressBookFuncTest extends BaseDriver {
         loginPageElements.emailInput.sendKeys("aaa@aaaa.com");
         loginPageElements.passwordInput.sendKeys("aaaaaa");
         loginPageElements.loginButton.click();
+
+    }
+
+
+    @Test(priority = 1)
+    public void addNewAddress(){
+        login();
         String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
         Assert.assertEquals(myAccountHeaderText, "My Account");
         myAccountPageElements.addressBookButton.click();
@@ -60,16 +66,7 @@ public class _04AddressBookFuncTest extends BaseDriver {
 
    @Test(priority = 3)
     public void editAddress(){
-       homePageElements = new HomePageElements(driver);
-       loginPageElements = new LoginPageElements(driver);
-       myAccountPageElements = new MyAccountPageElements(driver);
-
-       homePageElements.myAccountButton.click();
-       homePageElements.loginButton.click();
-
-       loginPageElements.emailInput.sendKeys("aaa@aaaa.com");
-       loginPageElements.passwordInput.sendKeys("aaaaaa");
-       loginPageElements.loginButton.click();
+        login();
        String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
        Assert.assertEquals(myAccountHeaderText, "My Account");
        myAccountPageElements.addressBookButton.click();
@@ -102,16 +99,7 @@ public class _04AddressBookFuncTest extends BaseDriver {
 
     @Test(priority = 5)
     public void deleteAddress(){
-        homePageElements = new HomePageElements(driver);
-        loginPageElements = new LoginPageElements(driver);
-        myAccountPageElements = new MyAccountPageElements(driver);
-
-        homePageElements.myAccountButton.click();
-        homePageElements.loginButton.click();
-
-        loginPageElements.emailInput.sendKeys("aaa@aaaa.com");
-        loginPageElements.passwordInput.sendKeys("aaaaaa");
-        loginPageElements.loginButton.click();
+        login();
         String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
         Assert.assertEquals(myAccountHeaderText, "My Account");
         myAccountPageElements.addressBookButton.click();
