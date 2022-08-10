@@ -18,16 +18,12 @@ public class _01LoginTest extends BaseDriver {
         homePageElements = new HomePageElements(driver);
         loginPageElements = new LoginPageElements(driver);
         myAccountPageElements = new MyAccountPageElements(driver);
-
         homePageElements.myAccountButton.click();
         homePageElements.loginButton.click();
-
         loginPageElements.emailInput.sendKeys("aaa@aaaa.com");
         loginPageElements.passwordInput.sendKeys("aaaaaa");
         loginPageElements.loginButton.click();
-
         String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
-
         Assert.assertEquals(myAccountHeaderText, "My Account");
 
     }

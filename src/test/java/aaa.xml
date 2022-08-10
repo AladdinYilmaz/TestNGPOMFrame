@@ -1,0 +1,15 @@
+<suite name="first suite">
+    <test name="first test">
+        <packages>
+            <package name="test.java">
+        <classes>
+            <class name="Test._01LoginTest"> </class>
+        </classes>
+        </package>
+        </packages>
+
+    </test>
+
+
+
+</suite>

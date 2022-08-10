@@ -2,8 +2,11 @@ package POM;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class MyAccountPageElements {
     public MyAccountPageElements(WebDriver driver) {
@@ -80,4 +83,8 @@ public class MyAccountPageElements {
     public WebElement deleteAddressBookButton;
     @FindBy(xpath = "//*[text()= ' Your address has been successfully deleted']")
     public WebElement deleteAddressSuccessMessage;
+
+    @FindAll({@FindBy(css = "a[class='btn btn-info']")})
+    public List<WebElement> editButtonList;
+
 }

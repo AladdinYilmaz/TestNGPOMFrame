@@ -18,25 +18,12 @@ public class _04AddressBookFuncTest extends BaseDriver {
     LoginPageElements loginPageElements;
     MyAccountPageElements myAccountPageElements;
 
-    public void login(){
-
-        homePageElements = new HomePageElements(driver);
-        loginPageElements = new LoginPageElements(driver);
-        myAccountPageElements = new MyAccountPageElements(driver);
-
-        homePageElements.myAccountButton.click();
-        homePageElements.loginButton.click();
-
-        loginPageElements.emailInput.sendKeys("aaa@aaaa.com");
-        loginPageElements.passwordInput.sendKeys("aaaaaa");
-        loginPageElements.loginButton.click();
-
-    }
+    _00LoginFunc loginFunc=new _00LoginFunc();
 
 
     @Test(priority = 1)
     public void addNewAddress(){
-        login();
+        loginFunc.login();
         String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
         Assert.assertEquals(myAccountHeaderText, "My Account");
         myAccountPageElements.addressBookButton.click();
@@ -66,7 +53,7 @@ public class _04AddressBookFuncTest extends BaseDriver {
 
    @Test(priority = 3)
     public void editAddress(){
-        login();
+       loginFunc.login();
        String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
        Assert.assertEquals(myAccountHeaderText, "My Account");
        myAccountPageElements.addressBookButton.click();
@@ -99,7 +86,7 @@ public class _04AddressBookFuncTest extends BaseDriver {
 
     @Test(priority = 5)
     public void deleteAddress(){
-        login();
+        loginFunc.login();
         String myAccountHeaderText = myAccountPageElements.myAccountHeader.getText();
         Assert.assertEquals(myAccountHeaderText, "My Account");
         myAccountPageElements.addressBookButton.click();
